@@ -1,0 +1,19 @@
+version: '3'
+# Each Service refers to a container
+services:
+  node-app:
+  # build: path of dockerfile which tells how the container need to be build
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    environment:
+      - PORT=3000
+    # env_file:
+    #   - ./.env
+
+# to start container - docker-compose up -d --build (it will build an image and start the container)
+# to stop container - docker-compose down (it will stop and remove the container but not the volume assosicated with it)
+# to stop container and remove the volume associated with the container - docker-compose down -v

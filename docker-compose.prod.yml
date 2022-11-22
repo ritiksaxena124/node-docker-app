@@ -1,0 +1,16 @@
+version: '3'
+# Each Service refers to a container
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+
+  node-app:
+    build:
+      context: .
+      args:
+        - NODE_ENV=production
+    environment:
+      - NODE_ENV=production
+    command: npm run start
